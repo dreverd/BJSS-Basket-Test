@@ -8,4 +8,8 @@ import com.bjss.baskettest.product.model.Product;
 
 public interface ProductRepository extends Repository<Product, Long> {
 	List<Product> findAll();
+
+	Product findProductByName(String name);
+
+	Product save(Product product);
 }

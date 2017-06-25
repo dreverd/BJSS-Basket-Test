@@ -22,4 +22,13 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.findAll();
 	}
 
+	@Override
+	public long addProduct(Product product) {
+		return productRepository.save(product).getProductId();
+	}
+
+	@Override
+	public Product getProduct(String name) {
+		return productRepository.findProductByName(name);
+	}
 }

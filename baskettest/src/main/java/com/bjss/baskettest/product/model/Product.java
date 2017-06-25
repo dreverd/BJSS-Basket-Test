@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 @Entity(name="product")
 public class Product {
     @Id @GeneratedValue
@@ -56,4 +59,21 @@ public class Product {
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
+	
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(name).toHashCode();
+    }
+ 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Product)) {
+            return false;
+        }
+        Product that = (Product) obj;
+        return new EqualsBuilder().append(name, that.name).isEquals();
+    }
 }
