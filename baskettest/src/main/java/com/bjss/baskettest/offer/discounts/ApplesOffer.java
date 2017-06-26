@@ -9,12 +9,16 @@ import com.bjss.baskettest.offer.OfferDetails;
 import com.bjss.baskettest.offer.OfferProcessor;
 import com.bjss.baskettest.product.model.Product;
 
+/**
+ * Concrete offer that implements the '10% of apples' rule 
+ */
 public class ApplesOffer extends OfferProcessor {
 	private static final String PRODUCT_MATCH_APPLES = "Apples";
 
 	public static final String OFFER_DESCRIPTION = "Apples 10% off";
 	
-	public boolean isApplicable(ProductAware data) {
+	@Override
+	protected boolean isApplicable(ProductAware data) {
 		return data.getProducts().keySet().stream().anyMatch(product -> product.getName().equals(PRODUCT_MATCH_APPLES));
 	}
 	

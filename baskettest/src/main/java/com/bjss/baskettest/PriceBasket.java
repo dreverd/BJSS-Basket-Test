@@ -1,6 +1,5 @@
 package com.bjss.baskettest;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,20 +50,18 @@ public class PriceBasket implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
         if (args.length > 0) {
-            Arrays.asList(args).forEach(arg -> {
-				try {
+			try {
+				for(String arg : args)
 					basketService.addToBasket(arg);
-				} catch (ProductNotFoundException e) {
-					System.out.println(e.getMessage());
-			        System.exit(0);		
-				}
-			});
             
-            List<OfferDetails> offerDetails = offers.getLeadOffer().process(basketService.getBasket());
+				List<OfferDetails> offerDetails = offers.getLeadOffer().process(basketService.getBasket());
             
-            outputter.output(basketService.getBasket(), offerDetails);;
+				outputter.output(basketService.getBasket(), offerDetails);
+			} catch (ProductNotFoundException e) {
+				System.out.print(e.getMessage());
+			}
         } else {
-            System.out.println("No items to add to basket");
+            System.out.print("No items to add to basket");
         }
 
         System.exit(0);		

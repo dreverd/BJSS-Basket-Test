@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 import com.bjss.baskettest.basket.model.Basket;
 import com.bjss.baskettest.offer.OfferDetails;
 
+/**
+ * Handle output for application, displays:
+ * 		Subtotal - sum of product prices
+ * 		Discounts - sum of individual discounts
+ *		Total - subtotal minus discounts
+ */
 @Component
 public class ConsoleOutput {
 

@@ -35,7 +35,7 @@ public class BasketTests {
 		basket.putProduct(apple);
 		
 		assertEquals(new BigDecimal("1.00"), basket.getTotal());
-		assertEquals(basket.getProducts().size(), 1);
+		assertEquals(1, basket.getProducts().size());
 		assertThat(basket.getProducts(), IsMapContaining.hasEntry(apple, 1));
 	}
 

@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 import com.bjss.baskettest.offer.discounts.ApplesOffer;
 import com.bjss.baskettest.offer.discounts.BreadOffer;
 
+/**
+ * Simple factory to create and chain offers 
+ */
 @Component
 public class OfferFactory {
 	

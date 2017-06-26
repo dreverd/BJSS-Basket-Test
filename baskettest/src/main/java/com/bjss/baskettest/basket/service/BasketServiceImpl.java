@@ -10,7 +10,8 @@ import com.bjss.baskettest.product.api.ProductService;
 import com.bjss.baskettest.product.model.Product;
 
 /**
- * Service class for basket, provides link to products
+ * Service class for basket, uses product service to validate
+ * product before adding to bag.
  */
 @Service
 public class BasketServiceImpl implements BasketService {

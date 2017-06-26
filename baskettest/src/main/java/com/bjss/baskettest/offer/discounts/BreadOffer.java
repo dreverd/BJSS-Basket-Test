@@ -9,6 +9,9 @@ import com.bjss.baskettest.offer.OfferDetails;
 import com.bjss.baskettest.offer.OfferProcessor;
 import com.bjss.baskettest.product.model.Product;
 
+/**
+ * Concrete offer that implements the '2 tins of soup gives half price bread' rule 
+ */
 public class BreadOffer extends OfferProcessor {
 	private static final String PRODUCT_MATCH_SOUP = "Soup";
 
@@ -16,7 +19,8 @@ public class BreadOffer extends OfferProcessor {
 	
 	public static final String OFFER_DESCRIPTION = "Buy 2 tins of soup, get loaf half price";
 	
-	public boolean isApplicable(ProductAware data) {
+	@Override
+	protected boolean isApplicable(ProductAware data) {
 		Optional<Entry<Product, Integer>> soupEntry = getEntry(data, PRODUCT_MATCH_SOUP);
 		Optional<Entry<Product, Integer>> breadEntry = getEntry(data, PRODUCT_MATCH_BREAD);
 		

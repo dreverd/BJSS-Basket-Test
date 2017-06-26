@@ -16,6 +16,10 @@ public class Basket implements ProductAware {
 	
 	private BigDecimal total;
 	
+	/**
+	 * Add product to basket and re-calculate total
+	 * @param product to add
+	 */
 	public void putProduct(Product product) {
 		products.merge(product, 1, Integer::sum);
 		total = calculateTotal();
@@ -31,6 +35,10 @@ public class Basket implements ProductAware {
 		return total;
 	}
 
+	/**
+	 * Calculate total price, sum of product price * product count 
+	 * @return total price of products
+	 */
 	private BigDecimal calculateTotal() {
 		return products
 				.entrySet()
